@@ -29,10 +29,10 @@
                               first
                               :setting
                               parse-long)
-        ten-minutes      (.toMillis (t/minutes 10))
+        sixty-minutes      (.toMillis (t/minutes 60))
         new-timeout      (if (zero? existing-timeout)
-                           ten-minutes
-                           (min ten-minutes existing-timeout))]
+                           sixty-minutes
+                           (min sixty-minutes existing-timeout))]
     ;; Can't use a prepared parameter with these statements
     (sql.ddl/execute! tx [(format "SET LOCAL statement_timeout TO '%s'" (str new-timeout))])))
 
